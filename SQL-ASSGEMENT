@@ -1,0 +1,18 @@
+// update querry
+Update [Admissions] Set attending_doctor_id = 29 where attending_doctor_id = 3;
+Update [Admissions] Set patient_id = 4 where patient_id = 35;
+select count(*) from admissions where attending_doctor_id = 3;
+
+
+/* sql excercise 1 */ 
+
+select * from doctors where doctor_id in (select attending_doctor_id from admissions);
+
+/* sql excercise 2 */ 
+
+select * from doctors where doctor_id  not in (select attending_doctor_id from admissions);
+
+/* sql excercise 3 */ 
+
+select * from patients p left join admissions a on p.patient_id = a.patient_id
+where a.attending_doctor_id is null;
